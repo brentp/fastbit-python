@@ -43,3 +43,5 @@ Usage
     [98, 99]
     >>> import shutil; shutil.rmtree('datadir.test')
 
+
+.. _`FastBit`: https://sdm.lbl.gov/fastbit/
