@@ -12,7 +12,7 @@ cdef extern from "Python.h":
 
 
 
-cdef extern from "capi.h":
+cdef extern from "fastbit/capi.h":
     struct FastBitQueryHandle:
            pass
     struct FastBitQuery:
@@ -28,7 +28,7 @@ cdef extern from *:
     ctypedef FastBitQuery* FastBitQueryHandle "FastBitQuery*"
 
 
-cdef extern from "capi.h":
+cdef extern from "fastbit/capi.h":
 
     void     fastbit_init(char *rcfile)
     int      fastbit_add_values(char *colname, char *coltype, void *vals, uint32_t nelem, uint32_t start)

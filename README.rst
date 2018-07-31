@@ -1,3 +1,6 @@
+add types support of query:
+ushort, uint, ulong, int ,long ,float, double
+
 FastBit-Python
 ==============
 

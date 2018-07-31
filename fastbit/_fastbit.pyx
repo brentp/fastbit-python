@@ -105,7 +105,7 @@ cdef class FastBit:
             assert len(col) == 2, col
             colname = col[0].split("=")[1].strip()
             colval = col[1].split("=")[1].strip()
-            d[colname] = colval[0].lower()
+            d[colname] = colval.lower()
 
         self.col_types = d
         return d
@@ -138,12 +138,22 @@ cdef class Query:
 
     def __getattr__(self, colname):
         ftype = self.ftypes[colname]
-        if ftype == 'i':
+        if ftype == 'ushort':
+            return self.get_qualified_ushorts(colname)
+        elif ftype == 'uint':
+            return self.get_qualified_uints(colname)
+        elif ftype == 'ulong':
+            return self.get_qualified_ulongs(colname)
+        elif ftype == 'int':
             return self.get_qualified_ints(colname)
-        if ftype == 'l':
+        elif ftype == 'long':
             return self.get_qualified_longs(colname)
-        elif ftype in 'f':
+        elif ftype == 'float':
             return self.get_qualified_floats(colname)
+        elif ftype == 'double':
+            return self.get_qualified_doubles(colname)
+        else:
+            print("ftype not support, please add: {0}".format(ftype))
 
     def __getitem__(self, colname):
         return getattr(self, colname)
